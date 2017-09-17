@@ -29,6 +29,8 @@ pipeline {
     }
     stage('deploy') {
       steps {
+	input message: 'Deploy to production',
+	ok: 'Please proceed'
         sh 'echo "deploying ...."'
       }
     }
