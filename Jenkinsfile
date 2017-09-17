@@ -14,6 +14,7 @@ pipeline {
     stage('build UI') {
       steps {
         sh 'echo "compile front ui code"'
+	sh 'node --version'
       }
     }
     stage('unit test') {
