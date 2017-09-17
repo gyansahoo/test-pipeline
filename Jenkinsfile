@@ -28,6 +28,9 @@ pipeline {
       }
     }
     stage('deploy') {
+      when {
+	branch 'master1'
+      }
       steps {
 	input message: 'Deploy to production',
 	ok: 'Please proceed'
