@@ -11,17 +11,23 @@ pipeline {
         branch 'master1'
       }
       steps {
-        sh 'echo "Static Analysis ...."'
+        sh '''echo "Static Analysis ...."
+
+echo "Code coverage checks, PMD, FindBugs and etc."
+'''
       }
     }
     stage('build backend') {
       steps {
-        sh 'echo "Running hybris build commands"'
+        sh '''echo "Running hybris build commands"
+echo "ant customize clean all"'''
       }
     }
     stage('build front-end') {
       steps {
-        sh 'echo "compile front ui code"'
+        sh '''echo "compile front ui code"
+echo "npm install"
+echo "npm run prod or vue.dev"'''
         sh 'node --version'
       }
     }
@@ -33,7 +39,8 @@ pipeline {
             
           },
           "Performance": {
-            sh 'echo Performance test'
+            sh '''echo Performance test
+echo "Blaze meter load testing"'''
             
           }
         )
