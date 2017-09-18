@@ -14,7 +14,7 @@ pipeline {
     stage('build UI') {
       steps {
         sh 'echo "compile front ui code"'
-	sh 'node --version'
+        sh 'node --version'
       }
     }
     stage('unit test') {
@@ -27,13 +27,17 @@ pipeline {
         sh 'echo "running selenium BVT script"'
       }
     }
-    stage('deploy') {
+    stage('Static Analysis') {
       when {
-	branch 'master1'
+        branch 'master1'
       }
       steps {
-	input message: 'Deploy to production',
-	ok: 'Please proceed'
+        input(message: 'Deploy to production', ok: 'Please proceed')
+        sh 'echo "Static Analysis ...."'
+      }
+    }
+    stage('Deploy') {
+      steps {
         sh 'echo "deploying ...."'
       }
     }
