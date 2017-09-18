@@ -14,12 +14,12 @@ pipeline {
         sh 'echo "Static Analysis ...."'
       }
     }
-    stage('build') {
+    stage('build backend') {
       steps {
         sh 'echo "Running hybris build commands"'
       }
     }
-    stage('build UI') {
+    stage('build front-end') {
       steps {
         sh 'echo "compile front ui code"'
         sh 'node --version'
@@ -39,20 +39,30 @@ pipeline {
         )
       }
     }
-    stage('run bvt') {
+    stage('BVT - Selenium') {
       steps {
         sh 'echo "running selenium BVT script"'
       }
     }
-    stage('Deploy') {
+    stage('Deploy QA') {
+      steps {
+        sh 'echo "deploying ...."'
+      }
+    }
+    stage('Deploy Perf') {
+      steps {
+        sh 'echo "Generating Reports"'
+      }
+    }
+    stage('Deploy production') {
       steps {
         input(message: 'Deploy to production', ok: 'Please proceed')
-        sh 'echo "deploying ...."'
+        sh 'echo Deploying production'
       }
     }
     stage('Report') {
       steps {
-        sh 'echo "Generating Reports"'
+        sh 'echo Generating report'
       }
     }
   }
