@@ -39,17 +39,17 @@ pipeline {
       steps {
         input(message: 'Deploy to production', ok: 'Please proceed')
         sh 'echo "deploying ...."'
-        archive (includes: './*.zip')
-        publishHTML(target:[
-          allowMissing: true,
-          alwaysLinkToLastBuild: true,
-          keepAll: true,
-          reportDir: 'coverage',
-          reportFiles: 'index.html',
-          reportName: 'HTML Report',
-          reportTitles: 'Pipeline report'
-          ])
       }
+      archive (includes: './*.zip')
+      publishHTML(target:[
+        allowMissing: true,
+        alwaysLinkToLastBuild: true,
+        keepAll: true,
+        reportDir: 'coverage',
+        reportFiles: 'index.html',
+        reportName: 'HTML Report',
+        reportTitles: 'Pipeline report'
+        ])
     }
   }
 }
