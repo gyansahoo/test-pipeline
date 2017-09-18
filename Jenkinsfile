@@ -6,6 +6,14 @@ pipeline {
         sh 'echo "checking code out from github repo"'
       }
     }
+    stage('Static Analysis') {
+      when {
+        branch 'master1'
+      }
+      steps {
+        sh 'echo "Static Analysis ...."'
+      }
+    }
     stage('build') {
       steps {
         sh 'echo "Running hybris build commands"'
@@ -25,14 +33,6 @@ pipeline {
     stage('run bvt') {
       steps {
         sh 'echo "running selenium BVT script"'
-      }
-    }
-    stage('Static Analysis') {
-      when {
-        branch 'master1'
-      }
-      steps {
-        sh 'echo "Static Analysis ...."'
       }
     }
     stage('Deploy') {
