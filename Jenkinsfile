@@ -32,12 +32,12 @@ pipeline {
         branch 'master1'
       }
       steps {
-        input(message: 'Deploy to production', ok: 'Please proceed')
         sh 'echo "Static Analysis ...."'
       }
     }
     stage('Deploy') {
       steps {
+        input(message: 'Deploy to production', ok: 'Please proceed')
         sh 'echo "deploying ...."'
       }
     }
