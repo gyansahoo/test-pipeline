@@ -25,9 +25,18 @@ pipeline {
         sh 'node --version'
       }
     }
-    stage('unit test') {
+    stage('Backend Test') {
       steps {
-        sh 'echo "Running JUnit test"'
+        parallel(
+          "Unit": {
+            sh 'echo Unit test'
+            
+          },
+          "Performance": {
+            sh 'echo Performance test'
+            
+          }
+        )
       }
     }
     stage('run bvt') {
