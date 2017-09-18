@@ -46,12 +46,12 @@ pipeline {
     }
     stage('Deploy QA') {
       steps {
-        sh 'echo "deploying ...."'
+        sh 'echo "deploying on QA ...."'
       }
     }
     stage('Deploy Perf') {
       steps {
-        sh 'echo "Generating Reports"'
+        sh 'echo Deploying PERF '
       }
     }
     stage('Deploy production') {
