@@ -41,5 +41,10 @@ pipeline {
         sh 'echo "deploying ...."'
       }
     }
+    stage('Report') {
+      steps {
+        sh 'echo "Generating Reports"'
+      }
+    }
   }
 }
