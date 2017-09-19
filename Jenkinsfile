@@ -25,25 +25,6 @@ pipeline {
         sh 'node --version'
       }
     }
-    stage('Backend Test') {
-      steps {
-        parallel(
-          "Unit": {
-            sh 'echo Unit test'
-            
-          },
-          "Performance": {
-            sh 'echo Performance test'
-            
-          }
-        )
-      }
-    }
-    stage('BVT - Selenium') {
-      steps {
-        sh 'echo "running selenium BVT script"'
-      }
-    }
     stage('Deploy QA') {
       steps {
         sh 'echo "deploying on QA ...."'
@@ -52,6 +33,25 @@ pipeline {
     stage('Deploy Perf') {
       steps {
         sh 'echo Deploying PERF '
+      }
+    }
+    stage('Backend Test') {
+      steps {
+        parallel(
+          "Unit": {
+            sh 'echo Unit test'
+
+          },
+          "Performance": {
+            sh 'echo Performance test'
+
+          }
+        )
+      }
+    }
+    stage('BVT - Selenium') {
+      steps {
+        sh 'echo "running selenium BVT script"'
       }
     }
     stage('Deploy production') {
