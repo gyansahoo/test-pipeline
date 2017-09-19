@@ -8,7 +8,7 @@ pipeline {
     }
     stage('Static Analysis') {
       when {
-        branch 'master1'
+        branch 'master'
       }
       steps {
         sh '''echo "Static Analysis ...."
@@ -49,9 +49,9 @@ echo "npm run prod or vue.dev"'''
 
           },
           "Performance": {
-            sh '''echo Performance test 
+            sh '''echo Performance test
            echo "Blaze meter load testing"'''
-            
+
           }
         )
       }
