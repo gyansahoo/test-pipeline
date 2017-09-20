@@ -38,6 +38,7 @@ echo "npm run prod or vue.dev"'''
     }
     stage('Deploy Perf') {
       steps {
+       input(message: 'Deploy to PERF?', ok: 'Please proceed')
         sh 'echo Deploying PERF '
       }
     }
@@ -63,7 +64,7 @@ echo "npm run prod or vue.dev"'''
     }
     stage('Deploy production') {
       steps {
-        input(message: 'Deploy to production', ok: 'Please proceed')
+        input(message: 'Deploy to production?', ok: 'Please proceed')
         sh 'echo Deploying production'
       }
     }
