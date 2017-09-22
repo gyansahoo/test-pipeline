@@ -76,6 +76,9 @@ echo "npm run prod or vue.dev"'''
       }
     }
     stage('Deploy production') {
+    when {
+      branch 'master'
+    }
       steps {
         parallel(
           "Deploy production": {
