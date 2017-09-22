@@ -3,7 +3,13 @@ pipeline {
   stages {
     stage('checkout code') {
       steps {
-        sh 'echo "checking code out from github repo"'
+        step('step1'){
+         sh 'echo "checking code out from github repo"'
+        }
+        step('step2'){
+         sh 'echo "checking code out from github repo"'
+        }
+
       }
     }
     stage('Static Analysis') {
@@ -42,15 +48,15 @@ echo "npm run prod or vue.dev"'''
           "Deploy Perf": {
             input(message: 'Deploy to PERF?', ok: 'Please proceed')
             sh 'echo Deploying PERF '
-            
+
           },
           "Node-1": {
             sh 'echo deploying perf node-1'
-            
+
           },
           "Node-2": {
             sh 'echo deploying perf node-2'
-            
+
           }
         )
       }
@@ -60,12 +66,12 @@ echo "npm run prod or vue.dev"'''
         parallel(
           "Unit": {
             sh 'echo Unit test'
-            
+
           },
           "Performance": {
             sh '''echo Performance test
            echo "Blaze meter load testing"'''
-            
+
           }
         )
       }
@@ -81,19 +87,19 @@ echo "npm run prod or vue.dev"'''
           "Deploy production": {
             input(message: 'Deploy to production?', ok: 'Please proceed')
             sh 'echo Deploying production'
-            
+
           },
           "Node-1": {
             sh 'echo deploying on node-1'
-            
+
           },
           "Node-2": {
             sh 'echo deploying node-2'
-            
+
           },
           "Node-3": {
             sh 'echo deploying node-3'
-            
+
           }
         )
       }
