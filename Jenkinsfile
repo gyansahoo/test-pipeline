@@ -38,7 +38,7 @@ echo "npm run prod or vue.dev"'''
     }
     stage('Deploy Perf') {
       steps {
-       input(message: 'Deploy to PERF?', ok: 'Please proceed')
+        input(message: 'Deploy to PERF?', ok: 'Please proceed')
         sh 'echo Deploying PERF '
       }
     }
@@ -47,12 +47,12 @@ echo "npm run prod or vue.dev"'''
         parallel(
           "Unit": {
             sh 'echo Unit test'
-
+            
           },
           "Performance": {
             sh '''echo Performance test
            echo "Blaze meter load testing"'''
-
+            
           }
         )
       }
@@ -64,8 +64,25 @@ echo "npm run prod or vue.dev"'''
     }
     stage('Deploy production') {
       steps {
-        input(message: 'Deploy to production?', ok: 'Please proceed')
-        sh 'echo Deploying production'
+        parallel(
+          "Deploy production": {
+            input(message: 'Deploy to production?', ok: 'Please proceed')
+            sh 'echo Deploying production'
+            
+          },
+          "Node-1": {
+            sh 'echo deploying on node-1'
+            
+          },
+          "Node-2": {
+            sh 'echo deploying node-2'
+            
+          },
+          "Node-3": {
+            sh 'echo deploying node-3'
+            
+          }
+        )
       }
     }
     stage('Report') {
