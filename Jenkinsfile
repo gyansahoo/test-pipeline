@@ -38,8 +38,21 @@ echo "npm run prod or vue.dev"'''
     }
     stage('Deploy Perf') {
       steps {
-        input(message: 'Deploy to PERF?', ok: 'Please proceed')
-        sh 'echo Deploying PERF '
+        parallel(
+          "Deploy Perf": {
+            input(message: 'Deploy to PERF?', ok: 'Please proceed')
+            sh 'echo Deploying PERF '
+            
+          },
+          "Node-1": {
+            sh 'echo deploying perf node-1'
+            
+          },
+          "Node-2": {
+            sh 'echo deploying perf node-2'
+            
+          }
+        )
       }
     }
     stage('Backend Test') {
