@@ -5,9 +5,6 @@ pipeline {
       steps {
          sh 'echo "checking code out from github repo"'
         }
-        steps {
-           sh 'echo "checking code out from github2 repo"'
-          }
     }
     stage('Static Analysis') {
       when {
