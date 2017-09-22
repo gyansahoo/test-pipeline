@@ -3,14 +3,11 @@ pipeline {
   stages {
     stage('checkout code') {
       steps {
-        step('step1'){
          sh 'echo "checking code out from github repo"'
         }
-        step('step2'){
-         sh 'echo "checking code out from github repo"'
-        }
-
-      }
+        steps {
+           sh 'echo "checking code out from github2 repo"'
+          }
     }
     stage('Static Analysis') {
       when {
