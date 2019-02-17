@@ -27,8 +27,8 @@ echo "ant customize clean all"'''
       steps {
         sh '''echo "compile front ui code"
 echo "npm install"
-echo "npm run prod or vue.dev"'''
-        sh 'node --version'
+echo "npm run prod or vue.dev"
+	 echo "run node --version"'''
       }
     }
     stage('Deploy QA') {
